@@ -2046,12 +2046,13 @@ body.demo-publico .phone { height: calc(100dvh - 28px); }
   background: var(--color-brand-primary);
   color: var(--color-background-light);
   font-family: var(--font-body);
-  font-size: 11px;
+  font-size: clamp(9px, 2.7vw, 11px);
   font-weight: 600;
   line-height: 1;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
+  white-space: nowrap;
 }
 @media (min-width: 520px) {
   body.demo-publico .phone { height: min(790px, calc(100dvh - 206px)); }
