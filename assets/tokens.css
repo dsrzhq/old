@@ -1,0 +1,128 @@
+/* ============================================================================
+   BITÁCORA · TOKENS DE DISEÑO
+   Fuente de verdad: docs/REQUERIMIENTOS.md, capítulo 7 ("Sistema de diseño
+   Náutica aplicado"). Los valores de color, tipografía, radios, elevación y
+   espaciado son los EXACTOS de la guía. Lo que la guía no define (colores
+   funcionales de estado, tintes, modo oscuro) está marcado como propuesta
+   pendiente de validación en el capítulo 7.3.2.
+   Ningún componente escribe color a mano: todo sale de estas variables.
+   ========================================================================== */
+
+:root {
+  /* --- 7.3 Color · los tres tokens de la guía Náutica -------------------- */
+  --color-brand-primary: #04224D;   /* Azul Marino · fondos, encabezados, botón primario */
+  --color-brand-accent: #ED1C24;    /* Rojo · CTA urgente, estados activos. NO texto pequeño */
+  --color-background-light: #FFFFFF;/* Fondo de tarjetas y secciones limpias */
+  --color-background-page: #F8F9FA; /* Variante del mismo token de fondo de la guía */
+
+  /* --- 7.3.2 Tokens funcionales derivados · propuesta pendiente ---------- */
+  --color-text-primary: var(--color-brand-primary); /* alias semántico del navy */
+  --color-text-secondary: #5B6B80;  /* 5,44:1 sobre blanco ✅ */
+  --color-border-subtle: #E6EBF2;   /* separadores y pistas de barra */
+  --color-border-strong: #6B7C93;   /* bordes de inputs · 4,26:1 ✅ (UI ≥ 3:1) */
+  --color-status-ok: #157A4A;       /* "Vas bien" · 5,36:1 ✅ */
+  --color-status-warn: #B45309;     /* "Ojo" · 5,02:1 ✅ */
+  --color-status-warn-strong: #8A3F07; /* variante AA para texto sobre tinte ámbar · 6,2:1 ✅ */
+  --color-status-danger: #C81018;   /* "Alerta" · 5,93:1 ✅ */
+  --color-accent-text: #B31217;     /* texto rojo accesible derivado del rojo · 6,96:1 ✅ */
+  --color-focus: #FFC845;           /* anillo de foco · 10,14:1 sobre navy ✅ */
+
+  /* Tintes al 12% (cap. 7.5 "chip de estado: fondo tintado 12%"). Se derivan
+     de los tokens de arriba con rgba; no introducen colores nuevos. */
+  --tint-primary: rgba(4, 34, 77, 0.12);
+  --tint-accent: rgba(237, 28, 36, 0.12);
+  --tint-ok: rgba(21, 122, 74, 0.12);
+  --tint-warn: rgba(180, 83, 9, 0.12);
+  --tint-danger: rgba(200, 16, 24, 0.12);
+  --tint-focus: rgba(255, 200, 69, 0.16);
+  --overlay-sheet: rgba(4, 34, 77, 0.48);
+  --overlay-camera: rgba(4, 34, 77, 0.92);
+  --shadow-floating: rgba(4, 34, 77, 0.24);
+  --shadow-stage: 0 40px 80px rgba(4, 34, 77, 0.55);
+  --ring-light: rgba(255, 255, 255, 0.12);
+
+  /* --- 7.7 Modo oscuro derivado · [COULD] pendiente de aprobación -------- */
+  --dm-background: #0A1A30;
+  --dm-surface: #0E2542;
+  --dm-text: #F2F5F9;
+  --dm-accent-text: #FF5A60;
+  /* El modo oscuro NO se aplica en fase 1. Tokens listos para cuando se apruebe. */
+
+  /* --- 7.2 Fundamento · grid y espacio (base 8 px) ----------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 40px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --margin-mobile: 24px;   /* contenido = ancho de pantalla − 48 px */
+  --grid-gutter: 16px;
+  --content-max: 430px;    /* marco de teléfono en escritorio (≤ 430) */
+  --touch-min: 48px;       /* mínimo táctil */
+  --touch-gap: 8px;        /* separación mínima entre objetivos */
+  --nav-height: 64px;
+
+  /* --- 7.4 Tipografía · familias de la guía ------------------------------ */
+  --font-display: "Archivo Black", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala móvil. Cuerpo y títulos en rem para que Dynamic Type (200%) funcione.
+     Los KPIs adicionalmente se limitan por ancho de viewport para que un número
+     de 10 caracteres nunca desborde a 320 px (§ verificación del prototipo). */
+  --text-h1: 2rem;                 /* 32/36 · 900 · MAYÚSCULAS · +0,10 em */
+  --text-h2: 1.5rem;               /* 24/28 · 600 · MAYÚSCULAS · +0,05 em */
+  --text-h3: 1.25rem;              /* 20/24 · 600 · MAYÚSCULAS · +0,05 em */
+  --text-body: 1.0625rem;          /* 17/26 · 400 · minúsculas · 0 */
+  --text-small: 0.9375rem;         /* 15/22 · 400 */
+  --text-caption: 0.8125rem;       /* 13/18 · 500 */
+  --text-label: 0.75rem;           /* 12/16 · 600 · etiquetas de sección */
+  --text-button: 1.0625rem;        /* 17/20 · 600 · sentence case */
+  /* Los KPI se limitan por ancho de viewport: un monto de 10 caracteres no debe
+     partirse en dos líneas al 200 % de texto. El resto de la tipografía escala en rem. */
+  --text-kpi: min(3.5rem, 12.5vw);        /* 48,75 px a 390 · 40 px a 320 */
+  --text-kpi-sm: min(2rem, 7.2vw);        /* números secundarios */
+  --leading-h1: 1.125;
+  --leading-h2: 1.1667;
+  --leading-body: 1.529;           /* 26/17 */
+  --tracking-h1: 0.1em;
+  --tracking-heading: 0.05em;
+  --tracking-wordmark: 0.24em;
+
+  /* --- 7.5 Componentes · radios, elevación ------------------------------ */
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-pill: 999px;
+  --elevation-1: 0 1px 2px rgba(4, 34, 77, 0.08);
+  --elevation-2: 0 4px 12px rgba(4, 34, 77, 0.12);
+  --elevation-3: 0 12px 32px rgba(4, 34, 77, 0.24);
+
+  /* --- Movimiento (≤ 200 ms, respeta "Reducir movimiento") -------------- */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --easing: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* --- Safe area iPhone (Face ID / home indicator) ---------------------- */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+}
+
+/* El simulacro de "Texto grande 200%" del QA se activa con esta clase en <html>.
+   Se usa la misma base rem que Dynamic Type: todo lo tipográfico escala. */
+html.texto-grande {
+  font-size: 200%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+  }
+}

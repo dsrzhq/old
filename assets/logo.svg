@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  BITÁCORA · Wordmark provisional (tipográfico)
+  ------------------------------------------------------------------
+  PENDIENTE DE APROBACIÓN: el brand book de Diego Bermúdez todavía no
+  existe y la guía Náutica define el LOGOTIPO + ISOTIPO (velas), pero el
+  isotipo no se debe inventar. Por eso este archivo es solo el wordmark
+  tipográfico "BITÁCORA", sin isotipo, para no simular una identidad que
+  no está aprobada. La versión definitiva (vectorial, con isotipo y
+  colchón de aire equivalente al ancho de la letra "N") se entregará
+  cuando Diego cierre su marca.
+  Uso actual: fondo navy del escenario de escritorio. El wordmark de la
+  app se compone con la tipografía Archivo Black desde CSS.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232 30" role="img" aria-label="Bitácora">
+  <title>BITÁCORA</title>
+  <text x="0" y="23"
+        font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+        font-size="23" font-weight="900" letter-spacing="5.2"
+        fill="#FFFFFF">BITÁCORA</text>
+</svg>
