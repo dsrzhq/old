@@ -2027,16 +2027,24 @@ html.texto-grande .avatar { width: 2rem; height: 2rem; }
 .leyendo-escaner { animation: escanear-linea 1.1s var(--easing) infinite alternate; }
 
 
-/* --- Aviso de demostración en la copia pública (GitHub Pages) ------------- */
-.demo-flag {
+/* --- Aviso de demostración en la copia pública (GitHub Pages) -------------
+   Solo se aplica cuando el cuerpo lleva .demo-publico (lo pone app.js si el
+   host es *.github.io). El prototipo local que se usa con Diego no cambia. */
+body.demo-publico { padding-top: 28px; }
+body.demo-publico .stage { min-height: calc(100dvh - 28px); }
+body.demo-publico .phone { height: calc(100dvh - 28px); }
+.demo-strip {
   position: fixed;
-  left: 12px;
-  bottom: calc(84px + env(safe-area-inset-bottom, 0px));
-  z-index: 70;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(4, 34, 77, 0.92);
-  color: #FFFFFF;
+  inset: 0 0 auto 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 12px;
+  background: var(--color-brand-primary);
+  color: var(--color-background-light);
   font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
@@ -2044,6 +2052,7 @@ html.texto-grande .avatar { width: 2rem; height: 2rem; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(4, 34, 77, 0.24);
 }
-@media (min-width: 520px) { .demo-flag { left: 16px; bottom: 16px; } }
+@media (min-width: 520px) {
+  body.demo-publico .phone { height: min(790px, calc(100dvh - 206px)); }
+}

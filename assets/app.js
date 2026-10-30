@@ -1663,15 +1663,16 @@
 
 
 /* --- Aviso de demostración en la copia pública (GitHub Pages) -------------
-   Solo se muestra cuando la app se sirve desde *.github.io: el prototipo local
-   que se usa en la demo con Diego queda exactamente igual que hasta ahora. */
+   Solo se activa cuando la app se sirve desde *.github.io: la copia local que
+   se usa en la demo con Diego queda exactamente igual que hasta ahora. */
 (function () {
   if (!/(^|\.)github\.io$/.test(location.hostname)) return;
-  if (document.querySelector('.demo-flag')) return;
-  var aviso = document.createElement('a');
-  aviso.className = 'demo-flag';
-  aviso.href = 'https://github.com/dsrzhq/old';
-  aviso.textContent = 'Demo · datos de ejemplo';
-  aviso.setAttribute('aria-label', 'Demostración con datos de ejemplo. Abrir repositorio.');
-  document.body.appendChild(aviso);
+  if (document.querySelector('.demo-strip')) return;
+  document.body.classList.add('demo-publico');
+  var franja = document.createElement('a');
+  franja.className = 'demo-strip';
+  franja.href = 'https://github.com/dsrzhq/old';
+  franja.textContent = 'Demo · datos de ejemplo — no es la app real';
+  franja.setAttribute('aria-label', 'Demostración con datos de ejemplo. No es la app real. Abrir repositorio.');
+  document.body.insertBefore(franja, document.body.firstChild);
 })();
