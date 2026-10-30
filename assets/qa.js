@@ -1,5 +1,5 @@
 /* ============================================================================
-   BITÁCORA · QA EN EL NAVEGADOR (solo se activa con ?qa=1)
+   TIMÓN · QA EN EL NAVEGADOR (solo se activa con ?qa=1)
    Mide lo que un script estático no puede ver: contraste real de texto
    renderizado, overflow horizontal, objetivos táctiles y número de alertas
    visibles por pantalla. Deja el resultado en <body data-qa="<base64>">

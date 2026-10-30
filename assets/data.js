@@ -1,5 +1,5 @@
 /* ============================================================================
-   BITÁCORA · DATOS FALSOS DEL PROTOTIPO (Ontario, CAD)
+   TIMÓN · DATOS FALSOS DEL PROTOTIPO (Ontario, CAD)
    ----------------------------------------------------------------------------
    REGLA DE ORO: todo el dinero vive en CENTAVOS ENTEROS. Nunca floats.
    Las tasas viven en ppm (partes por millón): 130000 ppm = 13 %.

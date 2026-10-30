@@ -1,5 +1,5 @@
 /* ============================================================================
-   BITÁCORA · APP (vanilla JS, sin frameworks, sin build, sin módulos ES)
+   TIMÓN · APP (vanilla JS, sin frameworks, sin build, sin módulos ES)
    - Rutas por hash: #/hoy, #/captura, #/clasificar, #/obra, #/nomina, #/margen
    - Shell único: 5 destinos + FAB de 64 px (cap. 6.2)
    - Toda cifra se calcula en centavos enteros y se formatea al presentar.
@@ -239,7 +239,7 @@
   function topbar(opciones) {
     opciones = opciones || {};
     if (opciones.home) {
-      return '<header class="topbar"><span class="wordmark">Bitácora</span><span class="topbar-spacer"></span>'
+      return '<header class="topbar"><span class="wordmark">Timón</span><span class="topbar-spacer"></span>'
         + '<button class="icon-btn" type="button" data-accion="cuenta" aria-label="Tu cuenta: Diego Bermúdez">'
         + '<span class="avatar" aria-hidden="true">DB</span></button></header>';
     }
@@ -247,7 +247,7 @@
     var etiqueta = opciones.volverLabel || 'Hoy';
     return '<header class="topbar">'
       + '<button class="icon-btn" type="button" data-accion="ir" data-ruta="' + esc(destino) + '" aria-label="Volver a ' + esc(etiqueta) + '">' + ico('flecha-izq') + '</button>'
-      + '<span class="topbar-spacer"></span><span class="wordmark">Bitácora</span></header>';
+      + '<span class="topbar-spacer"></span><span class="wordmark">Timón</span></header>';
   }
 
   /* ----------------------------------------------------------- piezas comunes */
@@ -786,7 +786,7 @@
       : 'La ordené en Materiales de 12 Maple Ave. Ya está en Gastos.';
     return '<div class="screen"><header class="topbar">'
       + '<button class="icon-btn" type="button" data-accion="ir" data-ruta="#/hoy" aria-label="Cerrar">' + ico('cerrar') + '</button>'
-      + '<span class="topbar-spacer"></span><span class="wordmark">Bitácora</span></header>'
+      + '<span class="topbar-spacer"></span><span class="wordmark">Timón</span></header>'
       + '<div class="screen-content"><div class="empty">'
       + '<div class="empty-ico">' + ico('check') + '</div>'
       + '<h1 class="empty-title">Factura guardada</h1>'
@@ -813,7 +813,7 @@
     var html = '<div class="screen">';
     html += '<header class="topbar">'
       + '<button class="icon-btn" type="button" data-accion="captura-repetir" aria-label="Volver a la foto">' + ico('flecha-izq') + '</button>'
-      + '<span class="topbar-spacer"></span><span class="wordmark">Bitácora</span></header>';
+      + '<span class="topbar-spacer"></span><span class="wordmark">Timón</span></header>';
     html += '<div class="page-head">'
       + '<p class="eyebrow">Captura · ' + (estado.offline ? 'sin conexión' : '1 foto') + '</p>'
       + '<h1 class="page-title">Revisar</h1>'
